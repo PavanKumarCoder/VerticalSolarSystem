@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>My first three.js app</title>
+		<style>
+			body { margin: 0; }
+		</style>
+	</head>
+	<body>
+		<script type="module" src="/main.js"></script>
+
+		<script>
+
+			var viewFromEarth = false;
+
+		</script>
+
+		<div style="position:fixed;width: fit-content; font-size: large;top: 50px;">
+			<input type="button" value="Toggle View From Earth" onclick="viewFromEarth = !viewFromEarth" ></input>
+			<br/>
+			<br/>
+			<input type="range" min="0.1" max="10" value="0.1" class="slider" id="earthSpeedRange"/>
+			<span style="color: white;">&nbsp;Earth Speed</span>
+			<br/>
+			<br/>
+			<input type="range" min="0.1" max="10" value="0.1" class="slider" id="moonSpeedRange"/>
+			<span style="color: white;">&nbsp;Moon Speed</span>
+			<br/>
+			<br/>
+			<input type="button" id="btnResetSpeeds" value="Reset Speeds"></input>
+		</div>
+
+	</body>
+</html>

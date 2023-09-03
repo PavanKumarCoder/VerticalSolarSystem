@@ -6,6 +6,7 @@
 		<style>
 			body { margin: 0; }
 		</style>
+	    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 	</head>
 	<body>
 		<script type="module" src="/main.js"></script>
@@ -16,8 +17,8 @@
 
 		</script>
 
-		<div style="position:fixed;width: fit-content; font-size: large;top: 50px;">
-			<input type="button" value="Toggle View From Earth" id="btnToggleViewFromEarth" ></input>
+		<div style="position:fixed;width: fit-content; font-size: large;top: 50px;"  >
+			<input type="button" value="Toggle View From Earth" id="btnToggleViewFromEarth" class="btn btn-primary" ></input>
 			<br/>
 			<br/>
 			<input type="range" min="0.1" max="10" value="0.1" class="slider" id="earthSpeedRange"/>
@@ -28,7 +29,7 @@
 			<span style="color: white;">&nbsp;Moon Speed</span>
 			<br/>
 			<br/>
-			<input type="button" id="btnResetSpeeds" value="Reset Speeds"></input>
+			<input type="button" id="btnResetSpeeds" value="Reset Speeds" class="btn btn-primary" ></input>
 		</div>
 
 	</body>

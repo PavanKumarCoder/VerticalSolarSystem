@@ -52,7 +52,6 @@ camera.position.z = 10;
 document.addEventListener( 'wheel', onMouseWheel, false );
 
 function onMouseWheel( event ) {
-	console.log("Hello1");
 	camera.position.z += event.deltaY * 0.01; // move camera along z-axis
 }
 
@@ -84,6 +83,18 @@ function animate() {
 	if(view == "earthView"){
 		camera.position.copy(earth.position);
 		camera.rotation.copy(earth.rotation);
+	}else if(view == "earthInCenterView"){
+		//camera.position.copy(new THREE.Vector3(-10,0,0));
+		//camera.rotation.set(0,0,0);
+		//camera.lookAt(new THREE.Vector3(0,0,0));
+
+		//var earthPosition = earth.position;
+		//earthPosition.setX(-10);
+		camera.position.copy(earth.position);
+		camera.position.setX(-10);
+		camera.lookAt(earth.position);
+		//camera.rotation.set(0,0,0);
+		//camera.rotation.copy(earth.rotation);
 	}
 
 	renderer.render( scene, camera );

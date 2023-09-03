@@ -56,14 +56,15 @@ function onMouseWheel( event ) {
 	camera.position.z += event.deltaY * 0.01; // move camera along z-axis
 }
 
-var btnToggleViewFromEarth = document.getElementById("btnToggleViewFromEarth");
-btnToggleViewFromEarth.onclick = function() {
-	viewFromEarth = !viewFromEarth;
+var ddChangeView = document.getElementById("ddChangeView");
+ddChangeView.onchange = function() {
+	view = this.value;
 
-	if(!viewFromEarth){
-		camera.position.copy(new THREE.Vector3(0,0,10));
-		camera.rotation.set(0,0,0);
-	}
+	if(view == "frontView"){
+ 		camera.position.copy(new THREE.Vector3(0,0,10));
+ 		camera.rotation.set(0,0,0);
+ 	}
+
 }
 
 function animate() {
@@ -76,7 +77,7 @@ function animate() {
 	rotateMesh(earth, earthRotationSpeed, time);
 	rotateMesh(moon, moonRotationSpeed, time);
 
-	if(viewFromEarth){
+	if(view == "earthView"){
 		camera.position.copy(earth.position);
 		camera.rotation.copy(earth.rotation);
 	}

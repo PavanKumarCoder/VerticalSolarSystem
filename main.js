@@ -42,7 +42,7 @@ document.getElementById("btnResetSpeeds").onclick =
 		moonRevolutionSpeed = 0.1;
 	}
 
-const moonOrbitRadius = 1; // Radius of the circle
+const moonOrbitRadius = 2; // Radius of the circle
 
 const moon = createMoon();
 scene.add( moon );
@@ -90,8 +90,19 @@ function animate() {
 		camera.rotation.x = earth.rotation.x;
 	}
 
+	scene.remove(lineToSun);
+	lineToSun = createLineBetweenPoints(earth.position, sun.position);
+	scene.add(lineToSun);
+
+	scene.remove(lineToMoon);
+	lineToMoon = createLineBetweenPoints(earth.position, moon.position, 0x00ff00);
+	scene.add(lineToMoon);
+
 	renderer.render( scene, camera );
 }
+
+var lineToSun;
+var lineToMoon;
 
 animate();
 
@@ -159,3 +170,10 @@ function moveMeshInCircle(mesh, center, transitionCenter, radius, speed, time) {
 function rotateMesh(mesh, speed, time) {
 	mesh.rotation.x -= 0.01;
 }
+
+function createLineBetweenPoints(point1, point2, color = 0xff0000) {
+	const material = new THREE.LineBasicMaterial({ color: color });
+	const geometry = new THREE.BufferGeometry().setFromPoints([point1, point2]);
+	const line = new THREE.Line(geometry, material);
+	return line;
+  }

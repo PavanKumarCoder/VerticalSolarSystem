@@ -47,13 +47,18 @@ const moonOrbitRadius = 1; // Radius of the circle
 const moon = createMoon();
 scene.add( moon );
 
-camera.position.z = 5;
+camera.position.z = 10;
 
 document.addEventListener( 'wheel', onMouseWheel, false );
 
 function onMouseWheel( event ) {
 	console.log("Hello1");
 	camera.position.z += event.deltaY * 0.01; // move camera along z-axis
+}
+
+var btnToggleViewFromEarth = document.getElementById("btnToggleViewFromEarth");
+btnToggleViewFromEarth.onclick = function() {
+	viewFromEarth = !viewFromEarth;
 }
 
 function animate() {
@@ -67,12 +72,12 @@ function animate() {
 	rotateMesh(moon, moonRotationSpeed, time);
 
 	if(viewFromEarth){
-		//camera.position.copy(earth.position);
-		//camera.rotation.copy(earth.rotation);
+		camera.position.copy(earth.position);
+		camera.rotation.copy(earth.rotation);
 	}
 	else{
-		//camera.position.copy(new THREE.Vector3(0,0,10));
-		//camera.rotation.set(0,0,0);
+		camera.position.copy(new THREE.Vector3(0,0,10));
+		camera.rotation.set(0,0,0);
 	}
 
 	renderer.render( scene, camera );

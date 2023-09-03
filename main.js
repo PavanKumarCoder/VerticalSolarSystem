@@ -84,17 +84,10 @@ function animate() {
 		camera.position.copy(earth.position);
 		camera.rotation.copy(earth.rotation);
 	}else if(view == "earthInCenterView"){
-		//camera.position.copy(new THREE.Vector3(-10,0,0));
-		//camera.rotation.set(0,0,0);
-		//camera.lookAt(new THREE.Vector3(0,0,0));
-
-		//var earthPosition = earth.position;
-		//earthPosition.setX(-10);
 		camera.position.copy(earth.position);
 		camera.position.setX(-10);
 		camera.lookAt(earth.position);
-		//camera.rotation.set(0,0,0);
-		//camera.rotation.copy(earth.rotation);
+		camera.rotation.x = earth.rotation.x;
 	}
 
 	renderer.render( scene, camera );

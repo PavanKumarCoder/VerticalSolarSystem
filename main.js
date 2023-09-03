@@ -63,8 +63,12 @@ ddChangeView.onchange = function() {
 	if(view == "frontView"){
  		camera.position.copy(new THREE.Vector3(0,0,10));
  		camera.rotation.set(0,0,0);
- 	}
-
+		camera.lookAt(new THREE.Vector3(0,0,0));
+	} else if(view == "sideView"){
+		camera.position.copy(new THREE.Vector3(-10,0,0));
+		camera.rotation.set(0,0,0);
+		camera.lookAt(new THREE.Vector3(0,0,0));
+	}
 }
 
 function animate() {

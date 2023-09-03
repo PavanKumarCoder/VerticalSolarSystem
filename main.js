@@ -59,6 +59,11 @@ function onMouseWheel( event ) {
 var btnToggleViewFromEarth = document.getElementById("btnToggleViewFromEarth");
 btnToggleViewFromEarth.onclick = function() {
 	viewFromEarth = !viewFromEarth;
+
+	if(!viewFromEarth){
+		camera.position.copy(new THREE.Vector3(0,0,10));
+		camera.rotation.set(0,0,0);
+	}
 }
 
 function animate() {
@@ -74,10 +79,6 @@ function animate() {
 	if(viewFromEarth){
 		camera.position.copy(earth.position);
 		camera.rotation.copy(earth.rotation);
-	}
-	else{
-		camera.position.copy(new THREE.Vector3(0,0,10));
-		camera.rotation.set(0,0,0);
 	}
 
 	renderer.render( scene, camera );
